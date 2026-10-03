@@ -50,3 +50,11 @@ button {
   margin: 0 auto;
   margin-bottom: 20px;
 }
+
+.pc {
+  max-width: 40%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
