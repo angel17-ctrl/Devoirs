@@ -32,7 +32,7 @@ button {
     cursor: pointer;
 }
 
-#BoutonManuel {
+#BoutonDivers {
     background-color : rgb(243, 140, 140);
 }
 
@@ -52,11 +52,35 @@ button {
   margin-bottom: 20px;
 }
 
+.matexplosion {
+  max-width: 30%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.physique {
+  max-width: 60%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.biologie {
+  max-width: 30%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
 .rappel_math {
   position: absolute;
-  top: 400px;
+  top: 650px;
   right: 20px;
-  width: 220px;
+  width: fit-content;
   padding: 15px;
   background: rgb(252, 178, 247);
   border: 2px solid #2563eb;
