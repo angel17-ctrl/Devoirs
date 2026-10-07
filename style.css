@@ -87,13 +87,3 @@ button {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
-
-@media (max-width: 768px) {
-  .rappel_math {
-    position: static;   /* revient dans le flux normal */
-    width: auto;
-    margin: 15px 0;
-    padding: 10px;
-    font-size: 0.9rem;
-  }
-}
