@@ -2,6 +2,7 @@ const BoutonMath = document.getElementById("BoutonMath");
 const BoutonPhysique = document.getElementById("BoutonPhysique");
 const BoutonBio = document.getElementById("BoutonBio");
 const BoutonDivers = document.getElementById("BoutonDivers");
+const BoutonChimie = document.getElementById("BoutonChimie");
 
 
 BoutonMath.addEventListener("click", function () {
@@ -18,4 +19,8 @@ BoutonBio.addEventListener("click", function () {
 
 BoutonDivers.addEventListener("click", function () {
     window.location.href = "pages/Divers/divers.html";
+  });
+
+BoutonChimie.addEventListener("click", function () {
+    window.location.href = "pages/Chimie.html";
   });
