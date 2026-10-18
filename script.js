@@ -3,6 +3,7 @@ const BoutonPhysique = document.getElementById("BoutonPhysique");
 const BoutonBio = document.getElementById("BoutonBio");
 const BoutonDivers = document.getElementById("BoutonDivers");
 const BoutonChimie = document.getElementById("BoutonChimie");
+const Bouton_FC_Ch_C1 = document.getElementById("Bouton_FC_Ch_C1");
 
 
 BoutonMath.addEventListener("click", function () {
@@ -23,4 +24,8 @@ BoutonDivers.addEventListener("click", function () {
 
 BoutonChimie.addEventListener("click", function () {
     window.location.href = "pages/Chimie.html";
+  });
+
+Bouton_FC_Ch_C1.addEventListener("click", function () {
+    window.location.href = "../flashcards/Chimie/Chap1.html";
   });
