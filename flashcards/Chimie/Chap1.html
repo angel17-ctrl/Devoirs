@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Flashcards</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 <style>
 :root{--bg:#eef1f8;--surface:#fff;--ink:#1b2340;--muted:#5d6788;--accent:#2f5bea;--accent-ink:#fff;--back:#1b2340;--back-ink:#fff;--ok:#1f8a5b;--no:#c4432f;--line:#d5dbec}
 @media (prefers-color-scheme:dark){:root{--bg:#10152a;--surface:#1a2140;--ink:#e8ecfa;--muted:#9aa5cc;--accent:#7b9bff;--accent-ink:#10152a;--back:#7b9bff;--back-ink:#10152a;--ok:#4cc38a;--no:#ff8a73;--line:#2b345c}}
@@ -60,21 +63,35 @@ button.primary{background:var(--accent);color:var(--accent-ink);border-color:var
 
 <script>
 /* =====================================================
-   MODIFIE TES QUESTIONS / RÉPONSES ICI
+   MODIFIE TES QUESTIONS / RÉPONSES ICI (et seulement ici)
+
    Une ligne = une carte :   ["question", "réponse"],
-   (garde les guillemets et la virgule à la fin de chaque ligne)
+   - garde les guillemets et la virgule à la fin de chaque ligne
+   - FORMULES : écris-les entre $...$ et DOUBLE chaque antislash
+       \\frac{a}{b}   \\alpha   \\lambda   \\sqrt{x}   x^2   x_1
+   - évite les guillemets " à l'intérieur d'une question
    ===================================================== */
 var CARDS = [
-  ["Capitale de la France ?", "Paris"],
-  ["Quelle est la formule de l’eau ?", "H₂O"],
+  ["Formule du nombre de masse ?", "$A = N + Z$"],
+  ["Qu'est ce que des isotopes ?", "Des nucléïdes de même Z mais de A (ici N) différents"],
+  ["Formule de la masse atomique $m(X)$ d'un élément ?", "$\\sum_{i = 1}^{n} x_{i} * m(i)$"],
+  ["Quelle lettre grecque désigne une longueur d’onde ?", "$\\lambda$"],
+  ["Quelle est la formule de l’eau ?", "$\\text{H}_2\\text{O}$"],
   ["En quelle année a eu lieu la Révolution française ?", "1789"],
-  ["Plus grand océan du monde ?", "Le Pacifique"],
-  ["Racine carrée de 144 ?", "12"]
+  ["Racine carrée de 144 ?", "$\\sqrt{144} = 12$"]
 ];
 /* ===================== FIN ===================== */
 
 var $=function(i){return document.getElementById(i)};
 var all=CARDS.map(function(c){return{q:c[0],a:c[1]}}),deck=[],i=0,known={},missed=[];
+
+function renderMath(){
+  if(!window.renderMathInElement)return;
+  renderMathInElement($("card"),{delimiters:[
+    {left:"$$",right:"$$",display:true},
+    {left:"$",right:"$",display:false}
+  ],throwOnError:false});
+}
 function start(cards){deck=cards.slice();i=0;known={};missed=[];show()}
 function show(){
   var done=i>=deck.length;
@@ -93,6 +110,7 @@ function show(){
   $("pos").textContent="Carte "+(i+1)+" / "+deck.length;
   $("card").classList.remove("flip");
   $("q").textContent=deck[i].q;$("a").textContent=deck[i].a;
+  renderMath();
 }
 function go(d){i=Math.max(0,Math.min(deck.length,i+d));show()}
 function mark(ok){
@@ -123,6 +141,7 @@ $("card").addEventListener("touchend",function(e){
   if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;sx=null;
   if(Math.abs(dx)>60){go(dx<0?1:-1);e.preventDefault()}
 });
+window.addEventListener("load",renderMath);
 start(all);
 </script>
 </body>
