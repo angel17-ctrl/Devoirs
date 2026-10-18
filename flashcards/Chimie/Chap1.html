@@ -28,6 +28,7 @@ button.primary{background:var(--accent);color:var(--accent-ink);border-color:var
 .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;font-size:1.35rem;font-weight:600;overflow:auto}
 .front{background:var(--surface);border:2px solid var(--line)}
 .back{background:var(--back);color:var(--back-ink);transform:rotateY(180deg)}
+.note{font-size:.9rem;font-weight:400;opacity:.85;margin-top:16px;max-width:90%}
 .hint{font-size:.8rem;font-weight:400;opacity:.65;margin-top:14px}
 .nav{display:flex;gap:10px}
 .nav button{flex:1}
@@ -43,7 +44,7 @@ button.primary{background:var(--accent);color:var(--accent-ink);border-color:var
   <div class="scene">
     <div class="card" id="card" tabindex="0" role="button" aria-label="Retourner la carte">
       <div class="face front"><div id="q"></div><div class="hint">Touche pour voir la réponse</div></div>
-      <div class="face back"><div id="a"></div></div>
+      <div class="face back"><div id="a"></div><div class="note" id="n"></div></div>
     </div>
   </div>
   <div class="nav">
@@ -70,16 +71,25 @@ button.primary{background:var(--accent);color:var(--accent-ink);border-color:var
    - FORMULES : écris-les entre $...$ et DOUBLE chaque antislash
        \\frac{a}{b}   \\alpha   \\lambda   \\sqrt{x}   x^2   x_1
    - évite les guillemets " à l'intérieur d'une question
+   - COMMENTAIRE (facultatif) : ajoute un 3e texte, il s'affiche
+     en plus petit sous la réponse :
+       ["question", "réponse", "commentaire"],
    ===================================================== */
 var CARDS = [
-  ["Formule du nombre de masse ?", "$A = N + Z$"],
-  ["Qu'est ce que des isotopes ?", "Des nucléïdes de même Z mais de A (ici N) différents"],
-  ["Formule de la masse atomique $m(X)$ d'un élément ?", "$\\sum_{i = 1}^{n} x_{i} * m(i)$"]
+  ["Formule du nombre de masse ?", "$A = N + Z$", "Avec $A, N$ et $Z$ respectivement les nombres de masse, de neutrons et de protons"],
+  ["Qu'este ce que des isotopes '?", "Des nucléides de même $Z$ mais $N$ différents (et donc $A$ aussi)"],
+  ["Formule de la masse atomique $m(X)$ ?", "$m(X) = \\sum_{i = 1}^{n} x_{i} m(i)$", "Avec $X$ l'élément, $i$ l'isotope, $n$ le nombre d'isotope, $x$ l'abondance"],
+  ["Valeur de $n$ le nombre d'Avogadro (quantité de matière) ?", "$n = 6.022*10^{23} mol$"],
+  ["Les formules de $\\lambda$ ?", "$\\lambda = \\frac{1}{\\sigma} = {C}{\\nu} = {C}{T}$", "Avec $\\lambda$ la longueur d'onde (en $m$), $\\sigma$ son inverse (en $m^{-1}$), $C$ la célérité de la lumière dand le vide (en $m.s^{-1}$), $\\nu$ la fréquence (en $Hz$), et $T$ la période (en $s$)"],
+  ["Formule de l'énergie d'un photon ?", "$E = h \\nu = \\frac{hC}{\\lambda}$", "Avec $h$ la constante de Planck (en $J.s^{-1}$)"],
+  ["Quel domaine de longueur d'onde correspond au visible ?", "de $400 nm$ (violet ) à $800 nm$ (rouge)", " En dessous de $400 nm$ c'est des UV, et au-dessus de $800 nm$ c'est les IR"],
+  ["Qu'est-ce qu'une série de raies ?", "Groupe de raies dont le niveau d'arrivé est identique"],
+  ["Quels sont les séries de raies de l'hydrogène et leur domaine ?", "Retour sur $n = 1 $ : Lyman (UV)"]
 ];
 /* ===================== FIN ===================== */
 
 var $=function(i){return document.getElementById(i)};
-var all=CARDS.map(function(c){return{q:c[0],a:c[1]}}),deck=[],i=0,known={},missed=[];
+var all=CARDS.map(function(c){return{q:c[0],a:c[1],n:c[2]||""}}),deck=[],i=0,known={},missed=[];
 
 function renderMath(){
   if(!window.renderMathInElement)return;
@@ -106,6 +116,7 @@ function show(){
   $("pos").textContent="Carte "+(i+1)+" / "+deck.length;
   $("card").classList.remove("flip");
   $("q").textContent=deck[i].q;$("a").textContent=deck[i].a;
+  $("n").textContent=deck[i].n;$("n").classList.toggle("hidden",!deck[i].n);
   renderMath();
 }
 function go(d){i=Math.max(0,Math.min(deck.length,i+d));show()}
