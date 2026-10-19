@@ -36,37 +36,9 @@ button {
     background-color : rgb(243, 140, 140);
 }
 
-[id^="Bouton_FC_PhMec_C2_"] {
+[id^="Bouton_FC_PhMec_"] {
     padding: 4px 10px;
     font-size: 17px;
-}
-
-
-#Bouton_FC_PhMec_C2_p1 {
-    background-color : rgb(232, 244, 141);
-}
-
-#Bouton_FC_PhMec_C2_p2 {
-    background-color : rgb(232, 244, 141);
-}
-
-#Bouton_FC_PhMec_C2_p3 {
-    background-color : rgb(232, 244, 141);
-}
-
-#Bouton_FC_PhMec_C2_p4 {
-    background-color : rgb(232, 244, 141);
-}
-
-#Bouton_FC_PhMec_C2_p5 {
-    background-color : rgb(232, 244, 141);
-}
-
-#Bouton_FC_PhMec_C2_p6 {
-    background-color : rgb(232, 244, 141);
-}
-
-#Bouton_FC_PhMec_C2_p7 {
     background-color : rgb(232, 244, 141);
 }
 
