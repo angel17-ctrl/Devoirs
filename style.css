@@ -36,6 +36,12 @@ button {
     background-color : rgb(243, 140, 140);
 }
 
+[id^="Bouton_FC_PhMec_C2_"] {
+    padding: 4px 10px;
+    font-size: 17px;
+}
+
+
 #Bouton_FC_PhMec_C2_p1 {
     background-color : rgb(232, 244, 141);
 }
