@@ -11,7 +11,14 @@ const liens = {
   Bouton_FC_PhMec_C2_p4: "../flashcards/Physique/mecanique/ch2_p4.html",
   Bouton_FC_PhMec_C2_p5: "../flashcards/Physique/mecanique/ch2_p5.html",
   Bouton_FC_PhMec_C2_p6: "../flashcards/Physique/mecanique/ch2_p6.html",
-  Bouton_FC_PhMec_C2_p7: "../flashcards/Physique/mecanique/ch2_p7.html"
+  Bouton_FC_PhMec_C2_p7: "../flashcards/Physique/mecanique/ch2_p7.html",
+  Bouton_FC_PhMec_C3_p1: "../flashcards/Physique/mecanique/ch3_p1.html",
+  Bouton_FC_PhMec_C3_p2: "../flashcards/Physique/mecanique/ch3_p2.html",
+  Bouton_FC_PhMec_C3_p3: "../flashcards/Physique/mecanique/ch3_p3.html",
+  Bouton_FC_PhMec_C3_p4: "../flashcards/Physique/mecanique/ch3_p4.html",
+  Bouton_FC_PhMec_C3_p5: "../flashcards/Physique/mecanique/ch3_p5.html",
+  Bouton_FC_PhMec_C3_p6: "../flashcards/Physique/mecanique/ch3_p6.html",
+  Bouton_FC_PhMec_C3_p7: "../flashcards/Physique/mecanique/ch3_p7.html",
 };
 
 for (const id in liens) {
